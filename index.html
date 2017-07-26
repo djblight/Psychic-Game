@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+  </head>
+  <body>
 
+    <h1>Press r, p or s key to play!>
+
+    <div class="game">
+      <p>You chose: <span class="myChoice"></span></p>
+      <p>Computer chose: <span class="cpuChoice"></span></p>
+      <p><span class="outcome"></span></p>
+      <p>Wins: <span class="wins"></span></p>
+      <p>Losses: <span class="losses"></span></p>
+      <p>Ties: <span class="ties"></span></p>
+</div>
+<script>
+  var rps= ["r", "p", "s"];
+  var userChoice = document.querySelector(".myChoice");
+  var cpuChoice = document.querySelector(".cpuChoice");
+  var outcome = document.querySelector(".outcome");
+  var myWin = document.querySelector(".wins");
+  var myTie = document.querySelector(".ties");
+  var myLoss = document.querySelector(".losses");
+  var wins = 0;
+  var losses = 0;
+  var ties = 0;
+
+document.onkeyup = function (event) {
+
+  var num = Math.floor((Math.random() * 3));
+  var cpu = rps[num];
+  var user = event.key;
+  
+userChoice.textContent = user;
+cpuChoice.textContent = cpu;
+}
+if(user === cpu){
+  outcome.textContent = "TIE"
+  ties += 1;
+  myTie.textContent = ties;
+  return
+  }
+   
+if (user === "r" && cpu === "p" || user === "p" && cpu === "s" || user === "s" && cpu === "r"){
+  outcome.textContent = "LOST";
+  losses += 1;
+  myLoss.textContent = losses;
+}
+else {
+  outcome.textContent = 'WIN';
+  wins += 1;
+  myWin.textContent = wins;
+}
+ 
+}
+</script>
+    
+  </body>
+</html>
